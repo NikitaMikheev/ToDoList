@@ -1,5 +1,5 @@
 let listArray = [
-    list__item = {
+    firstTask = {
         id: 0,
         name: "firstTask",
         status: false,
@@ -11,6 +11,6 @@ const button = document.querySelector('#buttonID');
 button.addEventListener('click', () => {
     var listName = document.querySelector('#inputName');
     var deadline = document.querySelector('#inputDate');
-    listArray.push(listName = {name: listName.value, status: false, date: deadline.value})
+    listArray.push(listName = {name: listName.value, status: false, date: deadline.value});
     console.log(listArray);
 })
