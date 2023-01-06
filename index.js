@@ -8,10 +8,11 @@ button.addEventListener('click', () => { /* событие при клике н�
 
     if (listName.value!="" && deadline.value!="") /* проверка на заполненность полей ввода */
     {
-        listArray.push(listName = {name: listName.value, status: false, date: deadline.value, id: listArray.length}); /* пуш в массив нового элемента (объекта с параметрами: id, имя задачи, статус, срок) */
+        listArray.push(objectItem = {name: listName.value, status: false, date: deadline.value, id: listArray.length}); /* пуш в массив нового элемента (объекта с параметрами: id, имя задачи, статус, срок) */
         console.log(listArray);                 /* убрать при завершении работы */
         clearItem(); /* вызов функции очистки экрана (списка) */
         reDrawing(listArray); /* вызов функции отрисовки массива (параметром передаем массив) */
+        clearInput(listName, deadline);
 
     }
     else {
@@ -33,7 +34,7 @@ document.getElementById('list').addEventListener('click', event => {
     }
 })
 
-function funcID(listArray) { /* Переприсваивание ID для элементов массива для поддержания правильной нумерации */
+function funcID(listArray) { /* функция для переприсваивания ID для элементов массива для поддержания правильной нумерации */
     for (let index = 0; index < listArray.length; index++) {
         listArray[index].id = index; 
         
@@ -58,9 +59,9 @@ function reDrawing(listArray) { /* функция для отрисовки ма
     }
 }
 
+function clearInput(listName, deadline) {
+    listName.value = '';
+    deadline.value = '';
+}
 
-/*
-document.addEventListener('click', event => {
-    var li = event.target.id;
-    console.log(li.id);
-}) */
+
