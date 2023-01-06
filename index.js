@@ -23,7 +23,7 @@ button.addEventListener('click', () => { /* событие при клике н�
 
 document.getElementById('list').addEventListener('click', event => {
     var buttonDelete = event.target;
-    if (event.target.className==="buttonDel") {
+    if (event.target.className==='buttonDel') {
         confirm('Подтвердите удаление задачи!')
         var objectID = buttonDelete.parentElement.parentElement.parentElement.id;
         listArray.splice(objectID, 1);
@@ -52,14 +52,14 @@ function clearItem() { /* функция для очистки содержим�
 function reDrawing(listArray) { /* функция для отрисовки массива */
     for (let index = 0; index < listArray.length; index++) {
         let newEl = document.createElement('li') /* создание нового элемента списка */
-        newEl.className = "list__item"; /* присваиваем имя элементу */
+        newEl.className = 'list__item'; /* присваиваем имя элементу */
         newEl.id = listArray[index].id; /* присваиваем id элементу */
         newEl.innerHTML = `<div class = "list__item-pos"><div><p class= "list__item-text">${listArray[index].name}</p><p>${String(listArray[index].date)}</p></div><div><button>Редактировать</button><button class="buttonDel">Удалить</button></div></div>`; /* помещаем текстовое значение для вывода - имя + дата + 2 кнопки*/
         list.append(newEl); /* добавление элемента в DOM дерево */
     }
 }
 
-function clearInput(listName, deadline) {
+function clearInput(listName, deadline) { /* функция для очистки input (первый параметр - название задачи, второй параметр - дата) */
     listName.value = '';
     deadline.value = '';
 }
