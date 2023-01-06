@@ -20,17 +20,24 @@ button.addEventListener('click', () => { /* событие при клике н�
     
 })
 
-
 document.getElementById('list').addEventListener('click', event => {
     var buttonDelete = event.target;
     if (event.target.className==="buttonDel") {
         var objectID = buttonDelete.parentElement.parentElement.parentElement.id;
         listArray.splice(objectID, 1);
+        funcID(listArray);
         clearItem(); 
         reDrawing(listArray);
         console.log(listArray);
     }
 })
+
+function funcID(listArray) { /* Переприсваивание ID для элементов массива для поддержания правильной нумерации */
+    for (let index = 0; index < listArray.length; index++) {
+        listArray[index].id = index; 
+        
+    }
+}
 
 function clearItem() { /* функция для очистки содержимого экрана */
     var liItem = document.querySelectorAll('.list__item') /* поиск всех элементов списка */
