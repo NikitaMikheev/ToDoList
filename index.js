@@ -21,9 +21,9 @@ button.addEventListener('click', () => { /* событие при клике н�
 })
 
 document.getElementById('list').addEventListener('click', event => {
-    confirm('Подтвердите удаление задачи!')
     var buttonDelete = event.target;
     if (event.target.className==="buttonDel") {
+        confirm('Подтвердите удаление задачи!')
         var objectID = buttonDelete.parentElement.parentElement.parentElement.id;
         listArray.splice(objectID, 1);
         funcID(listArray);
