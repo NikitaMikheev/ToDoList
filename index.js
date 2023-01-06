@@ -9,7 +9,7 @@ button.addEventListener('click', () => { /* событие при клике н�
     if (listName.value!="" && deadline.value!="") /* проверка на заполненность полей ввода */
     {
         listArray.push(listName = {name: listName.value, status: false, date: deadline.value, id: listArray.length}); /* пуш в массив нового элемента (объекта с параметрами: id, имя задачи, статус, срок) */
-        console.log(listArray); /* убрать при завершении работы */
+        console.log(listArray);                 /* убрать при завершении работы */
         clearItem(); /* вызов функции очистки экрана (списка) */
         reDrawing(listArray); /* вызов функции отрисовки массива (параметром передаем массив) */
 
@@ -21,6 +21,7 @@ button.addEventListener('click', () => { /* событие при клике н�
 })
 
 document.getElementById('list').addEventListener('click', event => {
+    confirm('Подтвердите удаление задачи!')
     var buttonDelete = event.target;
     if (event.target.className==="buttonDel") {
         var objectID = buttonDelete.parentElement.parentElement.parentElement.id;
@@ -28,7 +29,7 @@ document.getElementById('list').addEventListener('click', event => {
         funcID(listArray);
         clearItem(); 
         reDrawing(listArray);
-        console.log(listArray);
+        console.log(listArray);            /* убрать при завершении работы */
     }
 })
 
