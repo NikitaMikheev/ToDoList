@@ -52,11 +52,12 @@ document.getElementById('list').addEventListener('click', event => { /* обра
         button.id = 'buttonSave'
     }
 
-    else if (event.target.className === 'list__item-text') { /* отлавливаем наименование элемента. При клике на него статус задачи будет изменен на true */
+    else if (event.target.className === 'list__item-text' || event.target.className === 'list__item-text list__item-text--done') { /* отлавливаем наименование элемента. При клике на него статус задачи будет изменен на true */
         objectID = elemList.parentElement.parentElement.parentElement.id;
         changeStatus(objectID); /* вызов функции, изменяющий статус элемента массива на противоположный */
         clearItem(); /* вызов функции очистки экрана (списка) */  
         reDrawing(listArray); /* вызов функции отрисовки массива (параметром передаем массив) */
+        console.log(listArray);
     }
 })
 
@@ -85,6 +86,10 @@ function reDrawing(listArray) { /* функция для отрисовки ма
         newEl.id = listArray[index].id; /* присваиваем id элементу */
         newEl.innerHTML = `<div class = "list__item-pos"><div><p class= "list__item-text">${listArray[index].name}</p><p>${String(listArray[index].date)}</p></div><div><button class="buttonEdit">Редактировать</button><button class="buttonDel">Удалить</button></div></div>`; /* помещаем текстовое значение для вывода - имя + дата + 2 кнопки*/
         list.append(newEl); /* добавление элемента в DOM дерево */
+
+        if (listArray[index].status) { /* если status === true - добавляет новый класс для отображения выполненной задачи */
+            newEl.firstChild.firstChild.firstChild.classList.add('list__item-text--done');
+        }
     }
 }
 
@@ -99,13 +104,7 @@ function clearInput(listName, deadline) { /* функция для очистк�
 }
 
 function changeStatus(objectID) { /* функция замены статуса на противоположный (при клике) */
-    if (listArray[objectID].status) {
-        listArray[objectID].status = false;
-    }
-    else {
-        listArray[objectID].status = true;
-    }
-    console.log(listArray);
+    listArray[objectID].status = !listArray[objectID].status;
 }
 
 
