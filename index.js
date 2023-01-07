@@ -67,7 +67,6 @@ document.getElementById('list').addEventListener('click', event => { /* обра
 function funcID(listArray) { /* функция для переприсваивания ID для элементов массива для поддержания правильной нумерации */
     for (let index = 0; index < listArray.length; index++) {
         listArray[index].id = index; 
-        
     }
 }
 
